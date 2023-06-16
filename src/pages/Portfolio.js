@@ -50,6 +50,8 @@ export const Portfolio = () => {
                 <img
                   style={{
                     maxWidth: '1200px',
+                    maxHeight: '70vh',
+                    objectFit: 'cover',
                     filter: 'drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.16))',
                   }}
                   src={item.mainImage.url}
