@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
 import styled from 'styled-components';
 import { OuterWrapper, InnerWrapper } from '../components/Styles';
+import { PortableText } from '@portabletext/react';
+import { createClient } from '@sanity/client';
+
+export const client = createClient({
+  projectId: '68o5widz',
+  dataset: 'production',
+  useCdn: true, // set to `false` to bypass the edge cache
+  apiVersion: '2023-05-03', // use current date (YYYY-MM-DD) to target the latest API version
+  // token: process.env.SANITY_SECRET_TOKEN // Only if you want to update content with the client
+});
 
 export const About = () => {
+  const [aboutData, setAboutData] = useState();
+
+  const getPosts = async () => {
+    const about = await client.fetch('*[_id == "about"]');
+    console.log(about);
+    setAboutData(Array.from(about));
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   return (
     <OuterWrapper>
       <Navigation />
       <InnerWrapper>
         <AboutText>
-          Sam eossequamet que parum et eossin nim eos quaerspel ipisquis ex et
-          qui utem. Nem doloresti nonsed quat pliqui blatis magnamus. Fugitatia
-          simint re voluptatur? Uga. Equid qui abori doluptur minum vel iur modi
-          nullesti ipit, quam, comnihi ciendelique lacest aut fugitat estrum
-          volorendem cum untin nonsequ iandit voluptatem qui cusaecerum rectia
-          dolupidunt ella nim con nonse simodipitame officabor ab in por alicita
-          tibusdaecea pre volores sinumqu ossinus quo ex etur mosant repe
-          endenih iciatur ibuscius volligendu
+          {aboutData && <PortableText value={aboutData[0].about_text} />}
         </AboutText>
       </InnerWrapper>
     </OuterWrapper>
   );
 };
 
-const AboutText = styled.p`
+const AboutText = styled.div`
   font-family: var(--font-primary);
   font-size: 16px;
   line-height: 1.6;

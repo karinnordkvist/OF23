@@ -21,8 +21,11 @@ export default defineConfig({
             S.listItem()
               .title('Portfolio')
               .child(S.document().schemaType('portfolio').documentId('portfolio')),
+            S.listItem().title('CV').child(S.document().schemaType('cv').documentId('cv')),
+            S.listItem().title('About').child(S.document().schemaType('about').documentId('about')),
             ...S.documentTypeListItems().filter(
-              (listItem) => !['portfolio', 'portfolio_item'].includes(listItem.getId())
+              (listItem) =>
+                !['portfolio', 'portfolio_item', 'cv', 'about'].includes(listItem.getId())
             ),
           ]),
     }),

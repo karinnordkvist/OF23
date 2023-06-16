@@ -49,6 +49,7 @@ export const Portfolio = () => {
               >
                 <img
                   style={{
+                    width: '100%',
                     maxWidth: '1200px',
                     maxHeight: '70vh',
                     objectFit: 'cover',

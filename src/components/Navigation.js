@@ -72,6 +72,14 @@ const NavigationWrapper = styled.div`
     }
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 690px) {
+    a {
+      font-size: 28px;
+      min-width: 15%;
+
+      &:hover {
+        font-size: 30px;
+      }
+    }
   }
 `;
