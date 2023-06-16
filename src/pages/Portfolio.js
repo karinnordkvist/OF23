@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Navigation } from '../components/Navigation';
+import styled from 'styled-components';
 import { OuterWrapper, InnerWrapper } from '../components/Styles';
 // import { getPosts } from '@sanity.config';
 import { createClient } from '@sanity/client';
@@ -37,27 +38,8 @@ export const Portfolio = () => {
         {portfolioData &&
           portfolioData[0].portfolio_items.map((item, index) => {
             return (
-              <div
-                key={index}
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '15px',
-                  marginBottom: '40px',
-                }}
-              >
-                <img
-                  style={{
-                    width: '100%',
-                    maxWidth: '1200px',
-                    maxHeight: '70vh',
-                    objectFit: 'cover',
-                    filter: 'drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.16))',
-                  }}
-                  src={item.mainImage.url}
-                  alt={item.mainImage.alt}
-                />
+              <PortfolioItemWrapper key={index}>
+                <img src={item.mainImage.url} alt={item.mainImage.alt} />
                 <p
                   style={{
                     fontWeight: '400',
@@ -67,10 +49,31 @@ export const Portfolio = () => {
                 >
                   {item.title}
                 </p>
-              </div>
+              </PortfolioItemWrapper>
             );
           })}
       </InnerWrapper>
     </OuterWrapper>
   );
 };
+
+const PortfolioItemWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 40px;
+
+  img {
+    max-width: 1200px;
+    max-height: 70vh;
+    object-fit: cover;
+    filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.16));
+  }
+
+  @media (max-width: 960px) {
+    img {
+      width: 100%;
+    }
+  }
+`;
