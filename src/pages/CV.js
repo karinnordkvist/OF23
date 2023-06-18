@@ -18,7 +18,7 @@ export const CV = () => {
 
   const getPosts = async () => {
     const cv = await client.fetch('*[_id == "cv"]');
-    console.log(cv);
+    // console.log(cv);
     setCvData(Array.from(cv));
   };
 
@@ -57,7 +57,7 @@ const ThreeColumn = styled(InnerWrapper)`
     text-align: left;
     letter-spacing: 0;
     font-weight: 400;
-    width: 33.3%;
+    width: 21%;
   }
 
   @media (max-width: 690px) {

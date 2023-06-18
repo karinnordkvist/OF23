@@ -1,42 +1,32 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 export const Navigation = () => {
-  const location = useLocation();
-  const [currentLocation, setCurrentLocation] = useState('');
   const cv = useRef();
   const portfolio = useRef();
   const about = useRef();
 
-  const checkIfActive = (ref) => {
-    if (location.pathname === ref) {
+  useEffect(() => {
+    if (window.location.pathname === '/cv') {
+      cv.current.classList.add('active');
+    } else if (window.location.pathname === '/portfolio') {
+      portfolio.current.classList.add('active');
+    } else if (window.location.pathname === '/about') {
+      about.current.classList.add('active');
     }
-  };
+  }, [cv, portfolio, about]);
 
   return (
     <NavigationWrapper>
-      <Link
-        to={'/cv'}
-        location={location.pathname}
-        style={{ textAlign: 'left' }}
-        ref={cv}
-        className="cv"
-      >
+      <Link to={'/cv'} style={{ textAlign: 'left' }} ref={cv}>
         Cv
       </Link>
-      <Link
-        to={'/portfolio'}
-        location={location.pathname}
-        style={{ textAlign: 'center' }}
-        ref={portfolio}
-        className="portfolio"
-      >
+      <Link to={'/portfolio'} style={{ textAlign: 'center' }} ref={portfolio}>
         Portfolio
       </Link>
       <Link
         to={'/about'}
-        location={location.pathname}
         style={{ textAlign: 'right' }}
         ref={about}
         className="about"
@@ -70,6 +60,13 @@ const NavigationWrapper = styled.div`
       font-size: 42px;
       font-weight: 400;
     }
+  }
+
+  .active {
+    font-family: var(--font-secondary);
+    font-style: italic;
+    font-size: 42px;
+    font-weight: 400;
   }
 
   @media (max-width: 690px) {

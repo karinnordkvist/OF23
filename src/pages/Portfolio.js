@@ -29,7 +29,7 @@ export const Portfolio = () => {
     getPosts();
   }, []);
 
-  portfolioData && console.log(portfolioData[0].portfolio_items);
+  // portfolioData && console.log(portfolioData[0].portfolio_items);
 
   return (
     <OuterWrapper>
@@ -39,7 +39,11 @@ export const Portfolio = () => {
           portfolioData[0].portfolio_items.map((item, index) => {
             return (
               <PortfolioItemWrapper key={index}>
-                <img src={item.mainImage.url} alt={item.mainImage.alt} />
+                <img
+                  className={item.dropshadow ? 'drop-shadow' : ''}
+                  src={item.mainImage.url}
+                  alt={item.mainImage.alt}
+                />
                 <p
                   style={{
                     fontWeight: '400',
@@ -68,6 +72,9 @@ const PortfolioItemWrapper = styled.div`
     max-width: 1200px;
     max-height: 70vh;
     object-fit: cover;
+  }
+
+  .drop-shadow {
     filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, 0.16));
   }
 
