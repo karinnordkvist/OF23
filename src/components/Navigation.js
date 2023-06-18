@@ -25,12 +25,7 @@ export const Navigation = () => {
       <Link to={'/portfolio'} style={{ textAlign: 'center' }} ref={portfolio}>
         Portfolio
       </Link>
-      <Link
-        to={'/about'}
-        style={{ textAlign: 'right' }}
-        ref={about}
-        className="about"
-      >
+      <Link to={'/about'} style={{ textAlign: 'right' }} ref={about}>
         About
       </Link>
     </NavigationWrapper>
