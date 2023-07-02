@@ -27,6 +27,7 @@ const StartNavWrapper = styled.div`
     text-decoration: none;
     font-weight: 700;
     letter-spacing: -2px;
+    line-height: 1;
 
     &:hover {
       font-family: var(--font-secondary);
@@ -35,6 +36,31 @@ const StartNavWrapper = styled.div`
       font-weight: 400;
       letter-spacing: -10px;
       line-height: 180px;
+    }
+
+    @media (max-width: 890px) {
+      font-size: 142px;
+      &:hover {
+        font-size: 160px;
+        line-height: 0.9;
+      }
+    }
+
+    @media (max-width: 690px) {
+      font-size: 92px;
+      &:hover {
+        font-size: 109px;
+        line-height: 0.9;
+        letter-spacing: -5px;
+      }
+    }
+
+    @media (max-width: 390px) {
+      font-size: 86px;
+      &:hover {
+        font-size: 100px;
+        line-height: 0.9;
+      }
     }
   }
 `;
