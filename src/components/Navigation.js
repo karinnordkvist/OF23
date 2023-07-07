@@ -65,12 +65,14 @@ const NavigationWrapper = styled.div`
   }
 
   @media (max-width: 690px) {
-    a {
-      font-size: 28px;
-      min-width: 15%;
+    a,
+    .active {
+      font-size: 20px;
+      min-width: 30%;
+      letter-spacing: -1px;
 
       &:hover {
-        font-size: 30px;
+        font-size: 22px;
       }
     }
   }
